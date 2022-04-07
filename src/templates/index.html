@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>ooga booga</h1>
+    <form action="" method="POST" role="form">
+    {{ form.csrf }}
+    <div class="form-group">
+        <label for="long_url">Looong URL</label>
+            <input 
+                value="{{ copy_link }}"
+                type="text" name="long_url"
+                class="form-control form-control-lg"
+                id="copy_url"
+                placeholder="ooga booga"
+            >
+
+    </div>
+    <div class="button-group">
+        <button type="submit" class="btn btn-outline-primary">Shorten!</button>
+
+        <button type="button" class="btn btn-outline-secondary copy-btn" onclick="copyText()">Copy</button>
+    </div>
+    
+</form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning">
+                {{ message[1] }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+            
+{% endblock body %}
+
+
+{% block js %}
+<script>
+    function copyText() {
+        var copy_url = document.getElementById("copy_url");
+        if (copy_url) {
+            copy_url.select();
+            copy_url.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copy_url.value);
+        }
+    }
+
+</script>
+{% endblock js %}

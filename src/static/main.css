@@ -1,0 +1,14 @@
+.btn {
+    font-size: large;
+}
+
+.copy-btn {
+    border-color: chartreuse;
+    color: chartreuse;
+}
+
+.copy-btn:hover {
+    background-color: chartreuse;
+    color: white;
+    border-color: chartreuse;
+}

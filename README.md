@@ -1,2 +1,2 @@
-# url-shortener
+# URL Shorterizor
 Made with Flask
