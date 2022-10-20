@@ -1,7 +1,9 @@
-from flask import flash, redirect, render_template, request, url_for, Markup, url_for
-from models import NewUrl
-from app import app
+from config import Config
 from database import ShortUrls
+from flask import Markup, flash, redirect, render_template, request, url_for
+from models import NewUrl
+
+from app import app
 
 
 db = ShortUrls()
@@ -15,7 +17,8 @@ def index():
         if form.validate():
             short_url = db.add_url(long_url)
             uid = short_url if short_url else db.find_short_url(long_url)
-            copy_link = 'http://' + request.host + '/' + uid
+            dom = Config.DOMAIN_NAME if Config.DOMAIN_NAME else request.host
+            copy_link = 'http://' + dom + ':5000/' + uid
         else:
             flash("Not a valid URL")
 
