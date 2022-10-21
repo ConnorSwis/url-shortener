@@ -2,37 +2,31 @@
 
 {% block body %}
 
-<h1 class="">Link Shortener</h1>
-    <form action="" method="POST" role="form">
+<h1>Link Shortener</h1>
+<form action="" method="POST" role="form">
     {{ form.csrf }}
     <div class="form-group">
-        <label for="long_url">Looong URL</label>
-            <input 
-                value="{{ copy_link }}"
-                type="text" name="long_url"
-                class="form-control form-control-lg"
-                id="copy_url"
-                placeholder="https://google.com"
-            >
+        <input value="{{ copy_link }}" type="text" name="long_url" class="form-control form-control-lg" id="copy_url"
+            placeholder="Loooooong URL">
 
     </div>
     <div class="button-group">
-        <button type="submit" class="btn btn-outline-primary">Shorten!</button>
+        <button type="submit" class="btn submit-btn">Shorten!</button>
 
         <button type="button" class="btn btn-outline-secondary copy-btn" onclick="copyText()">Copy</button>
     </div>
-    
+
 </form>
 {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-warning">
-                {{ message[1] }}
-            </div>
-        {% endfor %}
-    {% endif %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning">
+    {{ message[1] }}
+</div>
+{% endfor %}
+{% endif %}
 {% endwith %}
-            
+
 {% endblock body %}
 
 

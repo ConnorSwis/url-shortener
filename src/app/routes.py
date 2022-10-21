@@ -18,7 +18,7 @@ def index():
             short_url = db.add_url(long_url)
             uid = short_url if short_url else db.find_short_url(long_url)
             dom = Config.DOMAIN_NAME if Config.DOMAIN_NAME else request.host
-            copy_link = 'http://' + dom + ':5000/' + uid
+            copy_link = 'http://' + dom + uid
         else:
             flash("Not a valid URL")
 
